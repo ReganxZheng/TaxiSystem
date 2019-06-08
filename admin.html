@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <!-- 
+      Student Name: Frankie Zheng
+      Student ID: 15895990
+      admin.html page 
+  -->
+  <meta charset="utf-8">
+  <title>Cab Admin</title>
+  <script type="text/javascript" src="adminjs.js"></script>
+  <link rel="stylesheet" href="./main.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="header">
+    <a class="head" href="booking.html">
+      <h2 class="logo">Easy Cab Booking System</h2>
+    </a>
+
+    <input type="checkbox" id="chk">
+    <label for="chk" class="show-menu-btn">
+      <i class="fas fa-chevron-circle-down"></i>
+    </label>
+    <ul class="menu">
+      <a href="index.html">Home</a>
+      <a href="booking.html">Booking</a>
+      <a href="admin.html">Admin</a>
+      <label for="chk" class="hide-menu-btn">
+        <i class="far fa-times-circle"></i>
+      </label>
+    </ul>
+  </div>
+
+  <div class="back-img"></div>
+  <div class="main-section"> 
+    <div class="admin-section">
+      <div class="sub-admin-section">
+          <h2>Easy Cab Booking System - Admin </h2>
+          <span>Admin Login: <span id="sysTime"></span></span>    
+      </div>
+      <form id="adminform" class="adminform">
+        <div class="admin">
+        <input type="text" class="admin-form-text"placeholder="Booking reference number" id="ref" name="refNumber" required>
+        <input type="button" class="admin-form-assign" value="Assign" name="assign" onClick="getAssign('assign.php','result',refNumber.value)" />
+        <input type="button" class="admin-form-request" value="Search" onClick="getSearch('request.php', 'result')">
+        </div>
+        <br><br><br><div id="result" class="result"></div>
+      </form>
+    </div>
+  </div>
+</body>
+
+<script type="text/javascript">
+  var today = new Date();
+  var current = today.toISOString().slice(0, 10);
+  if (today.getHours() < 10) {
+    var hours = "0" + today.getHours();
+  } else {
+    var hours = today.getHours();
+  }
+  if (today.getMinutes() < 10) {
+    var mins = "0" + today.getMinutes();
+  } else {
+    var mins = today.getMinutes();
+  }
+  var time = hours + ':' + mins;
+  document.getElementById("sysTime").innerHTML = current + " " + time;
+</script>
+
+</html>
